@@ -13,10 +13,14 @@ const hostname = 'localhost'
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
+// config static file
+
+//app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 //Khai bao route
 
 app.get('/', (req, res) => {
-    res.send('Hello World! hoi Huy thu xem co  hoc nodejs chua')
+    res.send('Hello World! hoi Huy thu xem co  hoc nodejs chua ahahaha')
 })
 
 //check duonbg link vidu nhu la http/8080/abc
