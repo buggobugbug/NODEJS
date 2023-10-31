@@ -1,18 +1,22 @@
+const { Console } = require('console')
 const express = require('express')
+require('dotenv').config()
+
+console.log(">>>>check env", process.env)
 
 //import express
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080// hardcode
 const path = require('path')
-
-// config termplat engine
+const hostname = 'localhost'
+// config termplate engine
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 //Khai bao route
 
 app.get('/', (req, res) => {
-    res.send('Hello World! hoi Huy thu xem co  hoc nodejschua')
+    res.send('Hello World! hoi Huy thu xem co  hoc nodejs chua')
 })
 
 //check duonbg link vidu nhu la http/8080/abc
@@ -26,7 +30,7 @@ app.get('/checkthehtml', (req, res) => {
     res.send('<h1>HTML OKE NHE</h1>')
 })
 
-app.listen(port, () => {
+app.listen(port, hostname, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
