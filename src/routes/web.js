@@ -2,9 +2,14 @@
 //Khai bao route
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {
-    res.send('Hello World! hoi Huy thu xem co  hoc nodejs chua ahahaha')
-})
+
+// nói với express thak nào chịu trách nhiệm xử lí khi user gửi yêu cầu
+const {getHomepage, getABC, gethoidanit} = require('../controllers/homeController')
+
+router.get('/', getHomepage)
+router.get('/abc', getABC)
+router.get('/hoidanithuychuabietcode', gethoidanit)
+
 
 //check duonbg link vidu nhu la http/8080/abc
 
@@ -16,6 +21,7 @@ router.get('/abc', (req, res) => {
 router.get('/checkthehtml', (req, res) => {
     res.send('<h1>HTML OKE NHE</h1>')
 })
+
 
 
 
