@@ -11,6 +11,10 @@ const app = express();
 const port = process.env.PORT || 8888;// hardcode
 const hostname = 'localhost';
 
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
+
+
 // config termplate engine
 
 configViewEngine(app);
@@ -18,7 +22,7 @@ configViewEngine(app);
 
 // Khai báo routes
 
-app.use('/v1', webRouter);
+app.use('', webRouter);
 
 
 // //test connection
@@ -35,7 +39,7 @@ app.use('/v1', webRouter);
 
 // simple query
 connection.query(
-    `select * from Users`,
+    `select * from Persons`,
     function (err, results, fields) {
         console.log(">>>>results= ", results); // results contains rows returned by server
     }
