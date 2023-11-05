@@ -39,7 +39,7 @@ app.use('', webRouter);
 
 // simple query
 connection.query(
-    `select * from Persons`,
+    `select * from Users`,
     function (err, results, fields) {
         console.log(">>>>results= ", results); // results contains rows returned by server
     }

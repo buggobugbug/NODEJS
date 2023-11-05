@@ -15,8 +15,27 @@ const gethoidanit = (req, res) => {
 }
 
 const postCreatuser = (req, res) => {
-    console.log('>>>>req.body', req.body)
-    res.send('creat a new user')
+    
+    let email = req.body.email;
+    let name = req.body.name;
+    let city = req.body.city;
+
+    // lấy data từ trên ứng dụng xuống
+
+    console.log('>>>>email= ', email, 'Name = ', name, 'city =', city )
+    // res.send('creat a new user')
+
+    connection.query(
+        'INSERT INTO Users (email, name, city) VALUES (?, ?, ?)',
+        [email, name, city],
+        function (err, results) {
+            console.log(results);
+            res.send('Create user succeed, OK')
+        }
+    );
+    
+
+
 }
 
 module.exports= {
