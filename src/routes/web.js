@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-// nói với express thak nào chịu trách nhiệm xử lí khi user gửi yêu cầu
+// nói với express thằng nào chịu trách nhiệm xử lí khi user gửi yêu cầu
 const {getHomepage, getABC, gethoidanit} = require('../controllers/homeController')
 
 router.get('/', getHomepage)
@@ -15,7 +15,7 @@ router.get('/hoidanithuychuabietcode', gethoidanit)
 
 router.get('/abc', (req, res) => {
     //res.send('Check abc')
-    res.render('sample.ejs')
+   
 })
 
 router.get('/checkthehtml', (req, res) => {

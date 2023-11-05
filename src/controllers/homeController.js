@@ -1,7 +1,11 @@
+const connection = require("../config/database")
+
+
 
 // Gửi yêu cầu trả về 1 phản hồi cho người dùng
 const getHomepage = (req , res) => {
-    res.send('Hello World! hoi Huy thu xem co  hoc nodejs chua ahahaha')
+   return res.render('homepage.ejs');
+   
 }
 const getABC = (req, res) => {
     res.send('check ABC')
