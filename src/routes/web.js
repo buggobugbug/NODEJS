@@ -4,13 +4,15 @@ const express = require('express');
 const router = express.Router();
 
 // nói với express thằng nào chịu trách nhiệm xử lí khi user gửi yêu cầu
-const {getHomepage, getABC, gethoidanit, postCreatuser} = require('../controllers/homeController')
+const { getHomepage, getABC, gethoidanit, postCreatuser, getCreatePage, getUpdateUser } = require('../controllers/homeController')
 
 router.get('/', getHomepage)
 router.get('/abc', getABC)
 router.get('/hoidanithuychuabietcode', gethoidanit)
 
 router.post('/create-user', postCreatuser)
+router.get('/create', getCreatePage)
+router.get('/update/:id', getUpdateUser) // nói cho server biết rằng đang muốn truyền động id vào
 
 //check duonbg link vidu nhu la http/8080/abc
 

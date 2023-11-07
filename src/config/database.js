@@ -1,6 +1,6 @@
 // // dùng lại các connection và code đã dùng
 require('dotenv').config();
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 
 // // TEST connection thử kết nối cơ sở dữ liệu
@@ -12,6 +12,7 @@ const mysql = require('mysql2');
 //     password: process.env.DB_PASSWORD,
 //     database: process.env.DB_NAME
 // });
+
 
 
 const connection = mysql.createPool({
