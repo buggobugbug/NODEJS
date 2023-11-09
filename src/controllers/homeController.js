@@ -1,7 +1,7 @@
 const connection = require("../config/database");
 
 
-const { getALLusers } = require('../services/CRUDService');
+const { getALLusers, getUserById, updateuserbyID, deleteuserbyID } = require('../services/CRUDService');
 // Gửi yêu cầu trả về 1 phản hồi cho người dùng
 const getHomepage = async(req , res) => {
     let result = await getALLusers(); // chờ hàm này chạy xong thì mới có dữ liệu
@@ -19,10 +19,13 @@ const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
 
-const getUpdateUser = (req, res) => {
+const getUpdateUser = async(req, res) => {
     const userid = req.params.id;
-    console.log('>>>> params', req.params, userid);
-    res.render('edit.ejs')
+    
+    let user = await getUserById(userid);
+
+    res.render('edit.ejs', { userEdit : user })  ; // x <- y 
+
 }
 
 const postCreatuser = async(req, res) => {
@@ -69,6 +72,37 @@ const postCreatuser = async(req, res) => {
 
 }
 
+const postUpdateuser = async (req, res) => {
+
+    let email = req.body.email;
+    let name = req.body.name;
+    let city = req.body.city;
+    let userid = req.body.userid;
+
+   
+    await updateuserbyID(email, city, name, userid)
+    // res.send('update, OK')
+    res.redirect('/');
+
+
+}
+
+const postDeleteUser = async (req, res) => {
+    const userid = req.params.id;
+
+    let user = await getUserById(userid);
+    res.render('delete.ejs', { userEdit : user });
+}
+
+const postHandleRemoveuser = async(req, res ) => {
+    const id =req.body.userid;
+    await deleteuserbyID(id)
+
+    res.redirect('/');
+}
+
+
 module.exports= {
-    getHomepage, getABC, gethoidanit, postCreatuser, getCreatePage, getALLusers, getUpdateUser
+    getHomepage, getABC, gethoidanit, postCreatuser, getCreatePage, getALLusers, getUpdateUser, updateuserbyID
+    , postUpdateuser, postDeleteUser, postHandleRemoveuser
 }

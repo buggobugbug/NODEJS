@@ -11,7 +11,7 @@
 <body>
 
 
-
+    <%= JSON.stringify(userEdit) %>
     <div class="topnav">
         <a href="/">Home</a>
         <a href="/create">Create new user </a>
@@ -19,24 +19,33 @@
 
     <div class="form">
 
-        <form action="/create-user" method="post">
+        <form action="/update-user" method="post">
 
             <fieldset>
                 <legend><b> Update a new user </b></legend>
+                
+                <div class="input-group-d-none">
+                <label>ID:</label>
+                <input type="text" name="userid" value="<%= userEdit.id %>">
+                <!-- fill code vào ô  -->
+                
+                </div>
+
                 <div class="input-group">
                     <label>Email:</label>
-                    <input type="text" name="email">
+                    <input type="text" name="email" value="<%= userEdit.email %>">  
+                    <!-- fill code vào ô  -->
 
                 </div>
                 <div class="input-group">
                     <label>Name:</label>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="<%= userEdit.name %>">   
 
                 </div>
 
                 <div class="input-group">
                     <label>City:</label>
-                    <input type="text" name="city">
+                    <input type="text" name="city" value="<%= userEdit.city %>">
 
                 </div>
 

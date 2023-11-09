@@ -76,3 +76,7 @@ padding: 15px 20px;
     font-weight: 500;
     padding-bottom: 10px;
 }
+
+.input-group-d-none{
+    display: none;
+}
